@@ -7,29 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPlayer = "black";
 
     const drawBoard = () => {
+        ctx.fillStyle = "#F5DEB3"; // 背景色设置为浅褐色
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         for (let i = 0; i <= size; i++) {
             ctx.beginPath();
             ctx.moveTo(i * cellSize, 0);
             ctx.lineTo(i * cellSize, canvas.height);
             ctx.moveTo(0, i * cellSize);
             ctx.lineTo(canvas.width, i * cellSize);
+            ctx.strokeStyle = "#000000";
             ctx.stroke();
         }
     };
 
     const placeStone = (x, y) => {
-        ctx.beginPath();
-        ctx.arc(
-            x * cellSize + cellSize / 2,
-            y * cellSize + cellSize / 2,
-            cellSize / 2.5,
-            0,
-            2 * Math.PI
-        );
-        ctx.fillStyle = currentPlayer;
-        ctx.fill();
-        board[x][y] = currentPlayer;
-        currentPlayer = currentPlayer === "black" ? "white" : "black";
+        if (board[x][y] === null) {
+            ctx.beginPath();
+            ctx.arc(
+                x * cellSize + cellSize / 2,
+                y * cellSize + cellSize / 2,
+                cellSize / 2.5,
+                0,
+                2 * Math.PI
+            );
+            ctx.fillStyle = currentPlayer;
+            ctx.fill();
+            board[x][y] = currentPlayer;
+            currentPlayer = currentPlayer === "black" ? "white" : "black";
+        }
     };
 
     const checkWin = (x, y) => {
