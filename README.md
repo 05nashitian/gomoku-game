@@ -14,7 +14,7 @@
 ## 安装和运行
 1. **克隆仓库**：
    ```sh
-   git clone https://github.com/YOUR_USERNAME/gomoku-game.git
+   git clone https://github.com/05nashitian/gomoku-game.git
    cd gomoku-game
 打开项目： 使用浏览器打开 index.html 文件即可运行游戏。
 
